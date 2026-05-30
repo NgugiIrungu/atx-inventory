@@ -1,0 +1,106 @@
+{
+  "products": {
+    "ATX-001": {
+      "id": "ATX-001",
+      "name": "Single Mode Fiber Cable",
+      "description": "OS2 9/125 single mode fiber",
+      "category": 1,
+      "price": 1.2,
+      "stock": 5000,
+      "unit": 1,
+      "low_stock_threshold": 500
+    },
+    "ATX-002": {
+      "id": "ATX-002",
+      "name": "OM3 Multimode Fiber Cable",
+      "description": "50/125 multimode, aqua",
+      "category": 1,
+      "price": 0.85,
+      "stock": 3000,
+      "unit": 1,
+      "low_stock_threshold": 300
+    },
+    "ATX-003": {
+      "id": "ATX-003",
+      "name": "Fiber Patch Panel 24-Port",
+      "description": "LC duplex patch panel",
+      "category": 1,
+      "price": 45,
+      "stock": 30,
+      "unit": 2,
+      "low_stock_threshold": 5
+    },
+    "ATX-004": {
+      "id": "ATX-004",
+      "name": "Cat6 LAN Cable",
+      "description": "U/UTP Cat6 solid copper",
+      "category": 2,
+      "price": 0.35,
+      "stock": 8000,
+      "unit": 1,
+      "low_stock_threshold": 1000
+    },
+    "ATX-005": {
+      "id": "ATX-005",
+      "name": "Cat6A LAN Cable",
+      "description": "F/UTP Cat6A shielded",
+      "category": 2,
+      "price": 0.65,
+      "stock": 4000,
+      "unit": 1,
+      "low_stock_threshold": 500
+    },
+    "ATX-006": {
+      "id": "ATX-006",
+      "name": "Cisco 24-Port Switch",
+      "description": "Catalyst 2960 Layer 2",
+      "category": 4,
+      "price": 320,
+      "stock": 15,
+      "unit": 2,
+      "low_stock_threshold": 3
+    },
+    "ATX-007": {
+      "id": "ATX-007",
+      "name": "MikroTik Router",
+      "description": "hEX RB750Gr3",
+      "category": 3,
+      "price": 59,
+      "stock": 25,
+      "unit": 2,
+      "low_stock_threshold": 5
+    },
+    "ATX-008": {
+      "id": "ATX-008",
+      "name": "LC/UPC Connector",
+      "description": "Single mode LC/UPC connector",
+      "category": 5,
+      "price": 0.8,
+      "stock": 2000,
+      "unit": 2,
+      "low_stock_threshold": 200
+    },
+    "ATX-009": {
+      "id": "ATX-009",
+      "name": "RJ45 Connector",
+      "description": "Cat6 gold-plated RJ45",
+      "category": 5,
+      "price": 0.1,
+      "stock": 5000,
+      "unit": 3,
+      "low_stock_threshold": 500
+    },
+    "ATX-010": {
+      "id": "ATX-010",
+      "name": "24-Port LAN Patch Panel",
+      "description": "Cat6 keystone patch panel",
+      "category": 2,
+      "price": 28,
+      "stock": 20,
+      "unit": 2,
+      "low_stock_threshold": 5
+    }
+  },
+  "history": {},
+  "counter": 10
+}

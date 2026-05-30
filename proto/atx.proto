@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+// ─────────────────────────────────────────
+//  ENUMS — fixed category and unit options
+// ─────────────────────────────────────────
+
+enum Category {
+  CATEGORY_UNSPECIFIED = 0;
+  FIBER                = 1;
+  LAN                  = 2;
+  ROUTERS              = 3;
+  SWITCHES             = 4;
+  CONNECTORS           = 5;
+}
+
+enum Unit {
+  UNIT_UNSPECIFIED = 0;
+  METRES           = 1;
+  PIECES           = 2;
+  BOXES            = 3;
+  ROLLS            = 4;
+}
+
+// ─────────────────────────────────────────
+//  PRODUCT — the core data shape
+// ─────────────────────────────────────────
+
+message Product {
+  string   id          = 1;
+  string   name        = 2;
+  string   description = 3;
+  Category category    = 4;
+  double   price       = 5;
+  int32    stock       = 6;
+  Unit     unit        = 7;
+  int32    low_stock_threshold = 8;
+}
+
+// ─────────────────────────────────────────
+//  STOCK HISTORY — every change recorded
+// ─────────────────────────────────────────
+
+enum ChangeReason {
+  REASON_UNSPECIFIED = 0;
+  RESTOCK            = 1;
+  SALE               = 2;
+  DAMAGE             = 3;
+  MANUAL_ADJUSTMENT  = 4;
+}
+
+message StockHistory {
+  string      product_id  = 1;
+  int32       quantity    = 2;  // positive = added, negative = removed
+  int32       stock_after = 3;
+  ChangeReason reason     = 4;
+  string      note        = 5;
+  string      timestamp   = 6;
+}
+
+// ─────────────────────────────────────────
+//  REQUEST / RESPONSE MESSAGES
+// ─────────────────────────────────────────
+
+message AddProductRequest {
+  string   name        = 1;
+  string   description = 2;
+  Category category    = 3;
+  double   price       = 4;
+  int32    stock       = 5;
+  Unit     unit        = 6;
+  int32    low_stock_threshold = 7;
+}
+
+message GetProductRequest {
+  string id = 1;
+}
+
+message UpdateStockRequest {
+  string       id       = 1;
+  int32        quantity = 2;
+  ChangeReason reason   = 3;
+  string       note     = 4;
+}
+
+message DeleteProductRequest {
+  string id = 1;
+}
+
+message GetStockHistoryRequest {
+  string id = 1;
+}
+
+message ListProductsRequest {}
+
+message ProductResponse {
+  bool    success = 1;
+  string  message = 2;
+  Product product = 3;
+}
+
+message DeleteResponse {
+  bool   success = 1;
+  string message = 2;
+}
+
+message StockHistoryResponse {
+  string              product_id = 1;
+  string              name       = 2;
+  repeated StockHistory history  = 3;
+}
+
+// ─────────────────────────────────────────
+//  SERVICE — all the actions a client can do
+// ─────────────────────────────────────────
+
+service InventoryService {
+  rpc AddProduct      (AddProductRequest)      returns (ProductResponse);
+  rpc GetProduct      (GetProductRequest)      returns (ProductResponse);
+  rpc UpdateStock     (UpdateStockRequest)     returns (ProductResponse);
+  rpc DeleteProduct   (DeleteProductRequest)   returns (DeleteResponse);
+  rpc ListProducts    (ListProductsRequest)    returns (stream ProductResponse);
+  rpc GetStockHistory (GetStockHistoryRequest) returns (StockHistoryResponse);
+}
